@@ -6,7 +6,7 @@ from ..hooks import uninstall_hook
 
 class TestUninstallHook(TransactionCase):
     def setUp(self):
-        super(TestUninstallHook, self).setUp()
+        super().setUp()
         # Create some sample tasks with different priorities
 
         self.task_normal = self.env["project.task"].create(
