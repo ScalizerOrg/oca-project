@@ -9,18 +9,24 @@ class TestUninstallHook(TransactionCase):
         super(TestUninstallHook, self).setUp()
         # Create some sample tasks with different priorities
 
-        self.task_normal = self.env["project.task"].create({
-            "name": "Task with Normal Priority",
-            "priority": "1",  # Normal priority
-        })
-        self.task_high = self.env["project.task"].create({
-            "name": "Task with High Priority",
-            "priority": "2",  # High priority
-        })
-        self.task_very_high = self.env["project.task"].create({
-            "name": "Task with Very High Priority",
-            "priority": "3",  # Very High priority
-        })
+        self.task_normal = self.env["project.task"].create(
+            {
+                "name": "Task with Normal Priority",
+                "priority": "1",  # Normal priority
+            }
+        )
+        self.task_high = self.env["project.task"].create(
+            {
+                "name": "Task with High Priority",
+                "priority": "2",  # High priority
+            }
+        )
+        self.task_very_high = self.env["project.task"].create(
+            {
+                "name": "Task with Very High Priority",
+                "priority": "3",  # Very High priority
+            }
+        )
 
     def test_uninstall_hook(self):
         """
@@ -35,15 +41,15 @@ class TestUninstallHook(TransactionCase):
         self.assertEqual(
             self.task_high.priority,
             "1",
-            "High priority task should be updated to Normal."
+            "High priority task should be updated to Normal.",
         )
         self.assertEqual(
             self.task_very_high.priority,
             "1",
-            "Very High priority task should be updated to Normal."
+            "Very High priority task should be updated to Normal.",
         )
         self.assertEqual(
             self.task_normal.priority,
             "1",
-            "Normal priority task should remain unchanged."
+            "Normal priority task should remain unchanged.",
         )
