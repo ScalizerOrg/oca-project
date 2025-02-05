@@ -31,12 +31,19 @@ class TestUninstallHook(TransactionCase):
         # Call the uninstall hook
         uninstall_hook(self.env)
 
-        # Refresh the records to get updated values from the database
-        self.task_high.refresh()
-        self.task_very_high.refresh()
-        self.task_normal.refresh()
-
         # Assert that the priorities have been updated correctly
-        self.assertEqual(self.task_high.priority, "1", "High priority task should be updated to Normal.")
-        self.assertEqual(self.task_very_high.priority, "1", "Very High priority task should be updated to Normal.")
-        self.assertEqual(self.task_normal.priority, "1", "Normal priority task should remain unchanged.")
+        self.assertEqual(
+            self.task_high.priority,
+            "1",
+            "High priority task should be updated to Normal."
+        )
+        self.assertEqual(
+            self.task_very_high.priority,
+            "1",
+            "Very High priority task should be updated to Normal."
+        )
+        self.assertEqual(
+            self.task_normal.priority,
+            "1",
+            "Normal priority task should remain unchanged."
+        )
