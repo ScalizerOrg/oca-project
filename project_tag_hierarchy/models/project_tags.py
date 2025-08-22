@@ -22,7 +22,8 @@ class ProjectTags(models.Model):
             names = []
             current = tag
             while current:
-                names.append(current.name)
+                if current.name:
+                    names.append(current.name)
                 current = current.parent_id
             tag.display_name = " / ".join(reversed(names))
 
