@@ -25,7 +25,7 @@ class ProjectTags(models.Model):
                 if current.name:
                     names.append(current.name)
                 current = current.parent_id
-            tag.display_name = " / ".join(reversed(names))
+            tag.display_name = " / ".join(reversed(names)) if names else ""
 
     @api.constrains("parent_id")
     def _check_parent_id(self):
